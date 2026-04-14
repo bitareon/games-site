@@ -4,639 +4,310 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bitareon Games</title>
-  <meta name="description" content="Bitareon Games – Indie Games mit Fokus auf Atmosphäre, Spielgefühl und eigenständigem Stil.">
+  <meta name="description" content="Bitareon Games ist die offizielle Spieleseite von Bitareon Studio mit Informationen zu Gloomvex, Gleam Nuggets und weiteren Projekten.">
   <style>
     :root {
-      --bg-1: #090b10;
-      --bg-2: #101625;
-      --panel: rgba(20, 27, 40, 0.78);
-      --panel-strong: rgba(17, 23, 34, 0.92);
-      --text: #f4f7fb;
-      --muted: #afbbcf;
-      --line: rgba(138, 164, 204, 0.18);
-      --accent: #7d5cff;
-      --accent-2: #4ec0ff;
-      --accent-hover: #9478ff;
-      --shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
-      --radius-xl: 24px;
+      --bg: #070a11;
+      --bg2: #0d1220;
+      --panel: rgba(18, 24, 38, 0.92);
+      --border: rgba(145, 166, 212, 0.18);
+      --text: #eef2ff;
+      --muted: #aab6d3;
+      --accent: #8b5cf6;
+      --accent-hover: #9f77ff;
+      --accent-2: #4cc9f0;
+      --shadow: 0 18px 50px rgba(0,0,0,0.35);
+      --radius-xl: 26px;
       --radius-lg: 18px;
-      --radius-md: 12px;
-      --max-width: 1160px;
+      --radius-md: 14px;
+      --maxw: 1180px;
     }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
       color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
       background:
-        radial-gradient(circle at top, rgba(125, 92, 255, 0.14), transparent 34%),
-        radial-gradient(circle at 85% 10%, rgba(78, 192, 255, 0.12), transparent 28%),
-        linear-gradient(180deg, var(--bg-1) 0%, var(--bg-2) 55%, #0b1018 100%);
+        radial-gradient(circle at top, rgba(139,92,246,0.20), transparent 28%),
+        radial-gradient(circle at 85% 12%, rgba(76,201,240,0.16), transparent 20%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
       min-height: 100vh;
     }
-
-    a {
-      color: inherit;
-      text-decoration: none;
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(var(--maxw), calc(100% - 32px)); margin: 0 auto; }
+    .topbar {
+      position: sticky; top: 0; z-index: 20; backdrop-filter: blur(12px);
+      background: rgba(7,10,17,0.72); border-bottom: 1px solid rgba(255,255,255,0.06);
     }
-
-    img {
-      display: block;
-      max-width: 100%;
-      height: auto;
+    .topbar-inner {
+      display: flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 74px;
     }
-
-    .page-shell {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .page-shell::before,
-    .page-shell::after {
-      content: "";
-      position: fixed;
-      inset: auto;
-      width: 560px;
-      height: 560px;
-      border-radius: 50%;
-      filter: blur(120px);
-      pointer-events: none;
-      opacity: 0.24;
-      z-index: 0;
-    }
-
-    .page-shell::before {
-      top: -140px;
-      left: -120px;
-      background: #6c4dff;
-    }
-
-    .page-shell::after {
-      right: -150px;
-      top: 220px;
-      background: #2aa8ff;
-    }
-
-    .container {
-      width: min(var(--max-width), calc(100% - 32px));
-      margin: 0 auto;
-      position: relative;
-      z-index: 1;
-    }
-
-    .site-header {
-      padding: 22px 0 10px;
-    }
-
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-      background: rgba(10, 14, 22, 0.55);
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      padding: 12px 16px;
-      backdrop-filter: blur(16px);
-      box-shadow: var(--shadow);
-    }
-
-    .nav-brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      min-width: 0;
-    }
-
-    .nav-brand img {
-      width: 132px;
-      max-width: 32vw;
-      object-fit: contain;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
-
-    .nav-links a {
-      color: var(--muted);
-      padding: 10px 14px;
-      border-radius: 999px;
-      transition: background 0.2s ease, color 0.2s ease;
-    }
-
-    .nav-links a:hover {
-      background: rgba(255, 255, 255, 0.06);
-      color: var(--text);
-    }
-
-    .hero {
-      padding: 72px 0 54px;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 28px;
-      align-items: center;
-    }
-
+    .brand { display: flex; align-items: center; gap: 14px; min-width: 0; }
+    .brand img { width: 180px; max-width: 42vw; height: auto; display: block; }
+    .nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; justify-content: flex-end; }
+    .nav a { color: var(--muted); font-size: 0.98rem; transition: color 0.2s ease; }
+    .nav a:hover { color: var(--text); }
+    .hero { padding: 72px 0 48px; }
+    .hero-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 28px; align-items: center; }
     .hero-copy {
-      background: linear-gradient(180deg, rgba(20, 27, 40, 0.8), rgba(12, 17, 26, 0.88));
-      border: 1px solid var(--line);
-      border-radius: var(--radius-xl);
-      padding: 38px;
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(16px);
+      background: linear-gradient(180deg, rgba(16,22,35,0.82), rgba(12,18,30,0.88));
+      border: 1px solid var(--border); box-shadow: var(--shadow); border-radius: var(--radius-xl); padding: 36px;
     }
-
     .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: rgba(125, 92, 255, 0.12);
-      border: 1px solid rgba(125, 92, 255, 0.28);
-      color: #d6cdff;
-      font-size: 0.92rem;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      margin-bottom: 20px;
+      display: inline-flex; align-items: center; gap: 8px; color: var(--accent-2);
+      background: rgba(76,201,240,0.08); border: 1px solid rgba(76,201,240,0.18);
+      border-radius: 999px; padding: 8px 12px; font-size: 0.9rem; margin-bottom: 18px;
     }
-
-    h1 {
-      font-size: clamp(2.4rem, 6vw, 4.8rem);
-      line-height: 0.98;
-      margin: 0 0 22px;
-      letter-spacing: -0.04em;
-    }
-
-    .hero-copy p {
-      margin: 0;
-      font-size: 1.08rem;
-      line-height: 1.8;
-      color: var(--muted);
-      max-width: 720px;
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin-top: 28px;
-    }
-
+    h1 { font-size: clamp(2.4rem, 5vw, 4.6rem); line-height: 1.02; margin: 0 0 16px; letter-spacing: -0.03em; }
+    .hero p { font-size: 1.08rem; line-height: 1.8; color: var(--muted); margin: 0; max-width: 62ch; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 28px; }
     .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      min-height: 48px;
-      padding: 12px 18px;
-      border-radius: 999px;
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      padding: 14px 18px; border-radius: 14px; font-weight: 700;
+      transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
       border: 1px solid transparent;
-      font-weight: 700;
-      transition: transform 0.18s ease, background 0.18s ease, border-color 0.18s ease, color 0.18s ease;
     }
-
-    .button:hover {
-      transform: translateY(-1px);
-    }
-
+    .button:hover { transform: translateY(-1px); }
     .button-primary {
-      background: linear-gradient(135deg, var(--accent), #5b8fff);
-      color: #fff;
-      box-shadow: 0 14px 32px rgba(92, 112, 255, 0.28);
+      background: linear-gradient(135deg, var(--accent), var(--accent-hover)); color: white;
+      box-shadow: 0 10px 26px rgba(139,92,246,0.26);
     }
-
-    .button-primary:hover {
-      background: linear-gradient(135deg, var(--accent-hover), #6a9dff);
-    }
-
-    .button-secondary {
-      background: rgba(255, 255, 255, 0.03);
-      border-color: var(--line);
-      color: var(--text);
-    }
-
-    .button-secondary:hover {
-      background: rgba(255, 255, 255, 0.07);
-      border-color: rgba(138, 164, 204, 0.28);
-    }
-
+    .button-secondary { background: rgba(255,255,255,0.03); color: var(--text); border-color: var(--border); }
+    .button-secondary:hover { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.16); }
+    .button img { width: 20px; height: 20px; object-fit: contain; display: block; }
     .hero-side {
-      display: grid;
-      gap: 18px;
+      background: linear-gradient(180deg, rgba(20, 26, 40, 0.88), rgba(12, 16, 27, 0.96));
+      border: 1px solid var(--border); box-shadow: var(--shadow); border-radius: var(--radius-xl); padding: 28px;
     }
-
-    .hero-card,
-    .section-card,
-    .game-card,
-    .footer-card {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-xl);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(18px);
+    .hero-side h2 { font-size: 1.15rem; margin: 0 0 18px; }
+    .hero-side ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+    .hero-side li {
+      color: var(--muted); background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 14px; padding: 14px 16px; line-height: 1.6;
     }
-
-    .hero-card {
-      padding: 24px;
-    }
-
-    .hero-logo {
-      padding: 20px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border: 1px solid rgba(255,255,255,0.06);
-      border-radius: var(--radius-lg);
-      min-height: 170px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .hero-logo img {
-      width: min(100%, 420px);
-      object-fit: contain;
-      filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.38));
-    }
-
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin-top: 18px;
-    }
-
-    .stat {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.06);
-      border-radius: var(--radius-md);
-      padding: 16px;
-    }
-
-    .stat strong {
-      display: block;
-      font-size: 1.4rem;
-      margin-bottom: 6px;
-    }
-
-    .stat span {
-      color: var(--muted);
-      font-size: 0.95rem;
-      line-height: 1.45;
-    }
-
-    .section {
-      padding: 20px 0 54px;
-    }
-
-    .section-header {
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 20px;
-      margin-bottom: 20px;
-    }
-
-    .section-header h2 {
-      margin: 0 0 10px;
-      font-size: clamp(1.7rem, 4vw, 2.5rem);
-      letter-spacing: -0.03em;
-    }
-
-    .section-header p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.7;
-      max-width: 720px;
-    }
-
-    .games-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 22px;
-    }
-
+    section { padding: 28px 0 12px; }
+    .section-head { margin-bottom: 22px; }
+    .section-head h2 { margin: 0 0 10px; font-size: clamp(1.7rem, 3vw, 2.4rem); }
+    .section-head p { margin: 0; color: var(--muted); line-height: 1.75; max-width: 76ch; }
+    .games-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
     .game-card {
-      padding: 24px;
-      position: relative;
-      overflow: hidden;
+      background: linear-gradient(180deg, rgba(18, 24, 38, 0.94), rgba(11, 16, 27, 0.98));
+      border: 1px solid var(--border); border-radius: var(--radius-xl); overflow: hidden;
+      box-shadow: var(--shadow); display: flex; flex-direction: column;
     }
-
-    .game-card::before {
-      content: "";
-      position: absolute;
-      inset: 0 0 auto 0;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, rgba(125,92,255,0.8), rgba(78,192,255,0.8), transparent);
+    .game-visual {
+      display: grid; place-items: center; min-height: 220px; padding: 28px;
+      background: radial-gradient(circle at top, rgba(139,92,246,0.18), transparent 40%), linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.00));
+      border-bottom: 1px solid rgba(255,255,255,0.05);
     }
-
+    .game-visual img {
+      max-width: min(100%, 340px); max-height: 150px; width: auto; height: auto; object-fit: contain;
+      display: block; filter: drop-shadow(0 18px 28px rgba(0,0,0,0.28));
+    }
+    .game-body { padding: 24px; display: flex; flex-direction: column; gap: 18px; height: 100%; }
+    .game-body h3 { margin: 0; font-size: 1.55rem; }
+    .game-body p { margin: 0; color: var(--muted); line-height: 1.75; }
+    .tag-row { display: flex; gap: 10px; flex-wrap: wrap; }
     .tag {
-      display: inline-block;
-      margin-bottom: 12px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.06);
-      color: #d4dded;
-      font-size: 0.86rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
+      display: inline-flex; padding: 8px 12px; border-radius: 999px; background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06); color: #d7dff3; font-size: 0.9rem;
     }
-
-    .game-card h3 {
-      margin: 0 0 12px;
-      font-size: 1.6rem;
+    .card-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: auto; }
+    .about-panel, .legal-panel {
+      background: linear-gradient(180deg, rgba(17, 23, 36, 0.88), rgba(11, 16, 27, 0.96));
+      border: 1px solid var(--border); border-radius: var(--radius-xl); box-shadow: var(--shadow); padding: 28px;
     }
-
-    .game-card p {
-      margin: 0 0 18px;
-      color: var(--muted);
-      line-height: 1.75;
+    .about-panel p, .legal-panel p { color: var(--muted); line-height: 1.8; margin: 0 0 14px; }
+    .legal-links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 18px; }
+    footer { padding: 42px 0 56px; color: var(--muted); }
+    .footer-box {
+      background: rgba(11,16,27,0.75); border: 1px solid rgba(255,255,255,0.06); border-radius: 18px;
+      padding: 20px 22px; display: flex; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap;
     }
-
-    .game-links {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
+    .footer-links { display: flex; gap: 16px; flex-wrap: wrap; }
+    .footer-links a:hover { color: var(--text); }
+    @media (max-width: 900px) {
+      .hero-grid, .games-grid { grid-template-columns: 1fr; }
+      .topbar-inner { min-height: unset; padding: 14px 0; align-items: flex-start; flex-direction: column; }
+      .nav { justify-content: flex-start; }
+      .hero { padding-top: 36px; }
+      .hero-copy, .hero-side, .about-panel, .legal-panel { padding: 24px; }
     }
-
-    .info-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .section-card {
-      padding: 24px;
-    }
-
-    .section-card h3 {
-      margin: 0 0 10px;
-      font-size: 1.15rem;
-    }
-
-    .section-card p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    .footer {
-      padding: 0 0 34px;
-    }
-
-    .footer-card {
-      padding: 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-      flex-wrap: wrap;
-    }
-
-    .footer-copy strong {
-      display: block;
-      margin-bottom: 8px;
-      font-size: 1.05rem;
-    }
-
-    .footer-copy span {
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .footer-links a {
-      color: var(--muted);
-      padding: 10px 14px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      background: rgba(255,255,255,0.03);
-      transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
-    }
-
-    .footer-links a:hover {
-      color: var(--text);
-      background: rgba(255,255,255,0.06);
-      border-color: rgba(138, 164, 204, 0.3);
-    }
-
-    @media (max-width: 980px) {
-      .hero-grid,
-      .games-grid,
-      .info-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hero {
-        padding-top: 54px;
-      }
-
-      .hero-copy,
-      .hero-card,
-      .section-card,
-      .game-card,
-      .footer-card {
-        border-radius: 20px;
-      }
-    }
-
-    @media (max-width: 720px) {
-      .nav {
-        border-radius: 24px;
-      }
-
-      .nav,
-      .section-header,
-      .footer-card {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .nav-links,
-      .hero-actions,
-      .game-links,
-      .footer-links {
-        width: 100%;
-      }
-
-      .nav-links a,
-      .footer-links a,
-      .button {
-        width: 100%;
-      }
-
-      .hero-copy {
-        padding: 28px 22px;
-      }
-
-      .stats-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-logo {
-        min-height: 130px;
-      }
+    @media (max-width: 520px) {
+      .container { width: min(var(--maxw), calc(100% - 20px)); }
+      .brand img { width: 150px; }
+      .hero-copy, .hero-side, .game-body, .about-panel, .legal-panel { padding: 20px; }
+      .game-visual { min-height: 180px; padding: 22px; }
+      .button, .card-actions .button { width: 100%; }
     }
   </style>
 </head>
 <body>
-  <div class="page-shell">
-    <header class="site-header">
-      <div class="container">
-        <nav class="nav" aria-label="Hauptnavigation">
-          <a class="nav-brand" href="#top" aria-label="Bitareon Games Startseite">
-            <img src="Bitareon_Logo_2000x800.png" alt="Bitareon Games Logo">
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="index.html" aria-label="Bitareon Games Startseite">
+        <img src="assets/Bitareon_Logo_2000x800.png" alt="Bitareon Games Logo">
+      </a>
+      <nav class="nav" aria-label="Hauptnavigation">
+        <a href="#games">Spiele</a>
+        <a href="#about">Studio</a>
+        <a href="#legal">Rechtliches</a>
+        <a href="https://discord.gg/qRFpBKGN" target="_blank" rel="noopener noreferrer">Discord</a>
+      </nav>
+    </div>
+  </div>
+
+  <header class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <div class="eyebrow">Indie Games von Bitareon Studio</div>
+        <h1>Atmosphärische Spiele mit klarer Identität.</h1>
+        <p>
+          Bitareon Games ist die zentrale Anlaufstelle für unsere Projekte. Hier finden Sie aktuelle Informationen zu unseren Spielen,
+          offizielle Projektseiten sowie rechtliche Hinweise. Im Fokus steht handgemachtes Indie-Game-Design mit markanter Stimmung,
+          klarer Formsprache und einem direkten Spielerlebnis.
+        </p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="https://store.steampowered.com/app/4449700/Gloomvex/" target="_blank" rel="noopener noreferrer">
+            <img src="assets/Steam_icon_logo.png" alt="">
+            Gloomvex auf Steam
           </a>
-          <div class="nav-links">
-            <a href="#games">Spiele</a>
-            <a href="#about">Studio</a>
-            <a href="gloomvex/">Gloomvex</a>
-          </div>
-        </nav>
-      </div>
-    </header>
-
-    <main id="top">
-      <section class="hero">
-        <div class="container">
-          <div class="hero-grid">
-            <div class="hero-copy">
-              <div class="eyebrow">Bitareon Games</div>
-              <h1>Indie Games mit Charakter, Atmosphäre und klarer Designhandschrift.</h1>
-              <p>
-                Willkommen bei Bitareon Games. Hier finden Sie aktuelle Spiele, Projektseiten und rechtliche Informationen an einem zentralen Ort. Der Fokus liegt auf eigenständigen Spielerlebnissen, prägnantem Game Feel und einer klaren visuellen Linie.
-              </p>
-              <div class="hero-actions">
-                <a class="button button-primary" href="#games">Spiele ansehen</a>
-                <a class="button button-secondary" href="gloomvex/">Zu Gloomvex</a>
-              </div>
-            </div>
-
-            <div class="hero-side">
-              <div class="hero-card">
-                <div class="hero-logo">
-                  <img src="Bitareon_Logo_2000x800.png" alt="Bitareon Games Logo groß">
-                </div>
-                <div class="stats-grid">
-                  <div class="stat">
-                    <strong>2</strong>
-                    <span>Spieleseiten bereits angebunden oder vorbereitet</span>
-                  </div>
-                  <div class="stat">
-                    <strong>Indie</strong>
-                    <span>Fokus auf eigenständige Projekte mit klarer Handschrift</span>
-                  </div>
-                  <div class="stat">
-                    <strong>Legal</strong>
-                    <span>Datenschutz, Impressum und Lizenzen zentral erreichbar</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <a class="button button-secondary" href="https://discord.gg/qRFpBKGN" target="_blank" rel="noopener noreferrer">
+            <img src="assets/DiscordLogo_Hovered_01.png" alt="">
+            Discord beitreten
+          </a>
+          <a class="button button-secondary" href="#games">Spiele ansehen</a>
         </div>
-      </section>
+      </div>
 
-      <section class="section" id="games">
-        <div class="container">
-          <div class="section-header">
-            <div>
-              <h2>Spiele</h2>
-              <p>Aktuelle Projekte und Spieleseiten von Bitareon Games. Jede Unterseite bündelt die wichtigsten Informationen zum jeweiligen Spiel sowie rechtliche Hinweise und Zusatzseiten.</p>
+      <aside class="hero-side" aria-label="Highlights">
+        <h2>Aktuell im Fokus</h2>
+        <ul>
+          <li><strong>Gloomvex</strong> ist unser aktuelles Arena-Roguelite mit schnellen Runs, eskalierenden Gegnerwellen und Build-Tiefe.</li>
+          <li><strong>Gleam Nuggets</strong> ergänzt das Portfolio als eigenständiges Projekt mit eigener Spieleseite und rechtlichen Informationen.</li>
+          <li>Alle Spieleseiten bündeln Projektinfos, Impressum, Datenschutz, Nutzungsbedingungen und Lizenzen an zentraler Stelle.</li>
+        </ul>
+      </aside>
+    </div>
+  </header>
+
+  <main>
+    <section id="games">
+      <div class="container">
+        <div class="section-head">
+          <h2>Unsere Spiele</h2>
+          <p>
+            Hier finden Sie die offiziellen Projektseiten unserer veröffentlichten und aktiven Spiele. Dort stehen weiterführende Informationen,
+            rechtliche Seiten und projektbezogene Hinweise bereit.
+          </p>
+        </div>
+
+        <div class="games-grid">
+          <article class="game-card">
+            <div class="game-visual">
+              <img src="assets/Gloomvex Logo 1280x720.png" alt="Gloomvex Logo">
             </div>
-          </div>
-
-          <div class="games-grid">
-            <article class="game-card">
-              <span class="tag">Action Roguelite</span>
+            <div class="game-body">
               <h3>Gloomvex</h3>
               <p>
-                Ein düsteres Arena-Roguelite mit eskalierenden Gegnerwellen, Bosskämpfen, Weapon Fusion und tiefem Build-Potenzial. Die Projektseite bündelt Spielinfos sowie Datenschutz, Impressum, Nutzungsbedingungen und Lizenzen.
+                Brutales Arena-Roguelite mit schnellen Kämpfen, wachsenden Gegnerwellen, tiefem Build-System und starken Waffen-Upgrades.
+                Überleben ist nicht garantiert — genau darin liegt die Herausforderung.
               </p>
-              <div class="game-links">
-                <a class="button button-primary" href="gloomvex/">Spieleseite öffnen</a>
-                <a class="button button-secondary" href="gloomvex/privacy.html">Datenschutz</a>
+              <div class="tag-row">
+                <span class="tag">Arena Roguelite</span>
+                <span class="tag">Build-Fokus</span>
+                <span class="tag">Steam</span>
               </div>
-            </article>
+              <div class="card-actions">
+                <a class="button button-primary" href="https://store.steampowered.com/app/4449700/Gloomvex/" target="_blank" rel="noopener noreferrer">
+                  <img src="assets/Steam_icon_logo.png" alt="">
+                  Steam-Seite
+                </a>
+                <a class="button button-secondary" href="gloomvex/">Projektseite</a>
+              </div>
+            </div>
+          </article>
 
-            <article class="game-card">
-              <span class="tag">Weitere Projekte</span>
+          <article class="game-card">
+            <div class="game-visual">
+              <img src="assets/GleamNuggets_Logo.png" alt="Gleam Nuggets Logo">
+            </div>
+            <div class="game-body">
               <h3>Gleam Nuggets</h3>
               <p>
-                Weitere Informationen, projektbezogene Seiten und rechtliche Hinweise zu Gleam Nuggets sind über die bestehende Spieleseite erreichbar. Dieser Bereich kann später um weitere Spiele erweitert werden.
+                Offizielle Projektseite mit den zugehörigen rechtlichen Informationen und zentralen Seiten für Datenschutz,
+                Nutzungsbedingungen und weitere projektrelevante Angaben.
               </p>
-              <div class="game-links">
-                <a class="button button-primary" href="gleam-nuggets/">Spieleseite öffnen</a>
-                <a class="button button-secondary" href="gleam-nuggets/privacy.html">Datenschutz</a>
+              <div class="tag-row">
+                <span class="tag">Projektseite</span>
+                <span class="tag">Legal Hub</span>
+                <span class="tag">Bitareon</span>
               </div>
-            </article>
-          </div>
+              <div class="card-actions">
+                <a class="button button-primary" href="gleam-nuggets/">Projektseite</a>
+              </div>
+            </div>
+          </article>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section class="section" id="about">
-        <div class="container">
-          <div class="section-header">
-            <div>
-              <h2>Studio</h2>
-              <p>Eine kompakte zentrale Anlaufstelle für Projekte, Markenauftritt und rechtliche Informationen. Die Seite ist bewusst schlank gehalten, damit Besucher schnell zu den einzelnen Spielen gelangen.</p>
-            </div>
-          </div>
-
-          <div class="info-grid">
-            <div class="section-card">
-              <h3>Klarer Markenauftritt</h3>
-              <p>Das große Logo ist direkt eingebunden und sorgt für eine konsistente Markenwirkung über Startseite, Spieleseiten und künftige Projekte hinweg.</p>
-            </div>
-            <div class="section-card">
-              <h3>Skalierbar für weitere Spiele</h3>
-              <p>Die Kartenstruktur lässt sich später ohne Umbauten um zusätzliche Titel, Teaser, Store-Links oder Plattformhinweise erweitern.</p>
-            </div>
-            <div class="section-card">
-              <h3>Zentrale Legal-Struktur</h3>
-              <p>Impressum, Datenschutz und Lizenzen können pro Spiel sauber verlinkt bleiben, ohne dass die Hauptseite überladen wirkt.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="footer">
+    <section id="about">
       <div class="container">
-        <div class="footer-card">
-          <div class="footer-copy">
-            <strong>Bitareon Games</strong>
-            <span>Indie-Projekte, Spieleseiten und rechtliche Informationen an einem zentralen Ort.</span>
-          </div>
-          <div class="footer-links">
-            <a href="gloomvex/imprint.html">Impressum</a>
-            <a href="gloomvex/privacy.html">Datenschutz</a>
-            <a href="gloomvex/licenses.html">Lizenzen</a>
+        <div class="section-head">
+          <h2>Über Bitareon Studio</h2>
+        </div>
+        <div class="about-panel">
+          <p>
+            Bitareon Studio entwickelt eigenständige Indie-Games mit Fokus auf Stil, Atmosphäre und eine klar erkennbare spielerische Handschrift.
+            Das Ziel ist kein austauschbares Massenprodukt, sondern prägnante Projekte mit Charakter, Wiedererkennungswert und sauberer Gesamtpräsentation.
+          </p>
+          <p>
+            Über diese Seite werden Spieleseiten, rechtliche Informationen und zentrale Verlinkungen gebündelt, damit Spielerinnen und Spieler sowie
+            Partner und Presse alle relevanten Informationen schnell und konsistent finden.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="legal">
+      <div class="container">
+        <div class="section-head">
+          <h2>Rechtliche Informationen</h2>
+          <p>
+            Die rechtlichen Hinweise zu den einzelnen Spielen werden auf den jeweiligen Projektseiten gepflegt. Für Gloomvex stehen dort
+            Impressum, Datenschutz, Nutzungsbedingungen und Hinweise zu verwendeten Schriftarten und Lizenzen bereit.
+          </p>
+        </div>
+        <div class="legal-panel">
+          <p>
+            Für allgemeine Projektinformationen sowie Community-Updates stehen zusätzlich unsere Steam-Präsenz und der offizielle Discord-Server zur Verfügung.
+          </p>
+          <div class="legal-links">
+            <a class="button button-secondary" href="gloomvex/imprint.html">Gloomvex Impressum</a>
+            <a class="button button-secondary" href="gloomvex/privacy.html">Gloomvex Datenschutz</a>
+            <a class="button button-secondary" href="gloomvex/terms.html">Gloomvex Nutzungsbedingungen</a>
+            <a class="button button-secondary" href="gloomvex/licenses.html">Gloomvex Lizenzen</a>
           </div>
         </div>
       </div>
-    </footer>
-  </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-box">
+        <div>© 2026 Bitareon Studio</div>
+        <div class="footer-links">
+          <a href="https://store.steampowered.com/app/4449700/Gloomvex/" target="_blank" rel="noopener noreferrer">Steam</a>
+          <a href="https://discord.gg/qRFpBKGN" target="_blank" rel="noopener noreferrer">Discord</a>
+          <a href="gloomvex/imprint.html">Impressum</a>
+          <a href="gloomvex/privacy.html">Datenschutz</a>
+          <a href="gloomvex/licenses.html">Lizenzen</a>
+        </div>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
