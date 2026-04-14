@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gloomvex – Rechtliche Informationen</title>
+  <meta name="description" content="Offizielle Rechtshinweise zu Gloomvex von Bitareon Studio mit Impressum, Datenschutz, Nutzungsbedingungen und Lizenzhinweisen.">
+  <style>
+    :root {
+      --bg: #0d1117;
+      --panel: #161b22;
+      --panel-2: #1c2330;
+      --text: #e6edf3;
+      --muted: #9fb0c0;
+      --accent: #7fd7ff;
+      --border: #2d3748;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(180deg, #0b0f14 0%, #101722 100%);
+      color: var(--text);
+      line-height: 1.65;
+    }
+    .wrap {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 40px 20px 60px;
+    }
+    .card {
+      background: rgba(22, 27, 34, 0.96);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      margin-bottom: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    }
+    h1, h2 { margin-top: 0; line-height: 1.2; }
+    h1 { font-size: 2.2rem; margin-bottom: 10px; }
+    h2 { font-size: 1.25rem; margin-bottom: 14px; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    ul { padding-left: 20px; }
+    .muted { color: var(--muted); }
+    .badge {
+      display: inline-block;
+      padding: 6px 10px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--muted);
+      background: var(--panel-2);
+      margin-right: 8px;
+      margin-bottom: 8px;
+      font-size: 0.92rem;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+    }
+    .tile {
+      display: block;
+      padding: 16px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: rgba(28, 35, 48, 0.7);
+    }
+    .tile strong { display: block; margin-bottom: 6px; }
+    .footer { color: var(--muted); font-size: 0.95rem; margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>Gloomvex</h1>
+      <p class="muted">Offizielle Legal-Seite von Bitareon Studio</p>
+      <p>
+        Gloomvex ist ein brutaler Arena-Roguelite mit schnellen Runs, skalierender Gegnerdichte, Bosskämpfen,
+        Waffenfusionen und Meta-Progression. Diese Seite bündelt die rechtlichen Hinweise zum Spiel und den zugehörigen Projektdiensten.
+      </p>
+      <div>
+        <span class="badge">Arena Roguelite</span>
+        <span class="badge">Steam</span>
+        <span class="badge">Discord Rich Presence</span>
+        <span class="badge">Lokale Spielstände</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Rechtliche Informationen</h2>
+      <div class="grid">
+        <a class="tile" href="./imprint.html">
+          <strong>Impressum</strong>
+          <span>Anbieterkennzeichnung und Kontaktinformationen.</span>
+        </a>
+        <a class="tile" href="./privacy.html">
+          <strong>Datenschutzerklärung</strong>
+          <span>Informationen zu Website, Spiel, Steam, Discord und Kontaktaufnahme.</span>
+        </a>
+        <a class="tile" href="./terms.html">
+          <strong>Nutzungsbedingungen</strong>
+          <span>Regeln zur Nutzung des Spiels und der Projektseiten.</span>
+        </a>
+        <a class="tile" href="./licenses.html">
+          <strong>Lizenzen &amp; Fonts</strong>
+          <span>Hinweise zu verwendeten Schriftarten und Drittbestandteilen.</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Anbieter</h2>
+      <p>
+        <strong>Arthur Janotta</strong><br>
+        Bitareon Studio<br>
+        c/o Block Services<br>
+        Stuttgarter Str. 106<br>
+        70736 Fellbach<br>
+        Deutschland
+      </p>
+      <p>
+        E-Mail: <a href="mailto:arthur.janotta@aj-visions.de">arthur.janotta@aj-visions.de</a>
+      </p>
+      <p>
+        Umsatzsteuer-ID: DE352272105
+      </p>
+    </div>
+
+    <p class="footer">© Arthur Janotta / Bitareon Studio</p>
+  </div>
+</body>
+</html>
