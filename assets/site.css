@@ -124,13 +124,13 @@ section { padding: 28px 0 12px; }
 }
 .game-visual img.logo-wide,
 .game-visual img.logo-gloomvex {
-  max-width: 300px !important;
-  max-height: 128px !important;
+  max-width: 220px !important;
+  max-height: 94px !important;
 }
 .game-visual img.logo-square,
 .game-visual img.logo-gleam {
-  max-width: 168px !important;
-  max-height: 168px !important;
+  max-width: 118px !important;
+  max-height: 118px !important;
 }
 
 .game-body, .link-card-body { padding: 24px; display: flex; flex-direction: column; gap: 18px; height: 100%; }
@@ -162,12 +162,12 @@ section { padding: 28px 0 12px; }
 }
 .project-logo.logo-square,
 .project-logo.logo-gleam {
-  max-width: 168px !important;
-  max-height: 168px !important;
+  max-width: 118px !important;
+  max-height: 118px !important;
 }
 .project-logo.logo-gloomvex {
-  max-width: 300px !important;
-  max-height: 128px !important;
+  max-width: 220px !important;
+  max-height: 94px !important;
 }
 
 .tab-nav { margin-top: 18px; }
@@ -229,9 +229,9 @@ footer { padding: 36px 0 54px; color: var(--muted); }
   .game-visual { min-height: 180px; padding: 22px; }
   .game-visual img.logo-wide,
   .game-visual img.logo-gloomvex,
-  .project-logo.logo-gloomvex { max-width: 240px !important; max-height: 102px !important; }
+  .project-logo.logo-gloomvex { max-width: 200px !important; max-height: 86px !important; }
   .game-visual img.logo-square,
   .game-visual img.logo-gleam,
   .project-logo.logo-square,
-  .project-logo.logo-gleam { max-width: 132px !important; max-height: 132px !important; }
+  .project-logo.logo-gleam { max-width: 104px !important; max-height: 104px !important; }
 }
